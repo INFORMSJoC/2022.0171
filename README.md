@@ -1,4 +1,52 @@
+[![INFORMS Journal on Computing Logo](https://INFORMSJoC.github.io/logos/INFORMS_Journal_on_Computing_Header.jpg)](https://pubsonline.informs.org/journal/ijoc)
+
+
 # PaPILO &mdash; Parallel Presolve for Integer and Linear Optimization
+This archive is distributed in association with the [INFORMS Journal on
+Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
+
+The software and data in this repository are a snapshot of the software and data
+that were used in the research reported on in the paper
+[PaPILO: A Parallel Presolving Library for Integer and Linear Programming with Multiprecision Support](https://doi.org/10.1287/ijoc.2022.0171) by A. Gleixner, L. Gottwald, and A. Hoen.
+The snapshot is based on
+[this SHA](https://github.com/scipopt/papilo/commit/ca33f61281e6f3f96d2bf115b0008c279e19bfd7)
+in the development repository.
+
+**Important: This code is being developed on an on-going basis at
+https://github.com/scipopt/papilo. Please go there if you would like to
+get a more recent version or would like support**
+
+## Cite
+
+To cite the contents of this repository, please cite both the paper and this repo, using their respective DOIs.
+
+##TODO the DOI is not correct: 10.1287/ijoc.2022.0171
+https://doi.org/10.1287/ijoc.2022.0171
+
+https://doi.org/10.1287/ijoc.2022.0171
+
+Below is the BibTex for citing this snapshot of the repository.
+
+```
+@article{CacheTest,
+  author =        {A. Gleixner, L. Gottwald, A. Hoen},
+  publisher =     {INFORMS Journal on Computing},
+  title =         {\papilo: A Parallel Presolving Library for Integer and Linear Programming with Multiprecision Support},
+  year =          {2022},
+  doi =           {10.1287/ijoc.2022.0171.cd},
+  url =           {https://github.com/INFORMSJoC/2022.0171},
+}  
+```
+
+The release report of the SCIP Optimization Suite 7.0 contains a section about PaPILO. The report is available under http://www.optimization-online.org/DB_HTML/2020/03/7705.html.
+
+Most of the presolve methods implemented in PaPILO are described in the paper "Presolve Reductions in Mixed Integer Programming" by Achterberg et al.
+which is available under https://opus4.kobv.de/opus4-zib/files/6037/Presolve.pdf.
+
+Some details on how PaPILO works internally are presented in a talk given during the SCIP workshop 2020 which has been recorded
+and is available under https://www.youtube.com/watch?v=JKAyyWXGeQM.
+
+# Description
 
 PaPILO, a C++14-based software package, provides parallel presolve routines for (mixed integer) linear programming problems. The routines
 are implemented using templates which allows switching to higher precision or rational arithmetic using the boost multiprecision package.
@@ -383,17 +431,6 @@ Create a folder `results` there and move the out files (not the overall but only
 Executing the `LogFileParser` will analyse the log and create txt file containing information about the logs in a separate folder for each instance.
 Executing the `TableParser` will parse these information and generate an overall view of the conflicts.
 
-
-# References and how to cite
-
-The release report of the SCIP Optimization Suite 7.0 contains a section about PaPILO. The report is available under http://www.optimization-online.org/DB_HTML/2020/03/7705.html.
-
-Most of the presolve methods implemented in PaPILO are described in the paper "Presolve Reductions in Mixed Integer Programming" by Achterberg et al.
-which is available under https://opus4.kobv.de/opus4-zib/files/6037/Presolve.pdf.
-
-Some details on how PaPILO works internally are presented in a talk given during the SCIP workshop 2020 which has been recorded
-and is available under https://www.youtube.com/watch?v=JKAyyWXGeQM.
-
 # Licensing
 
 To avoid confusion about licensing a short note on the LGPLv3.
@@ -423,3 +460,13 @@ Gabriel Kressin ([@GabrielKP](https://github.com/GabrielKP)) &mdash; numerical s
 Anass Meskini &mdash; general development and contributions to substitution presolver in terms of internship
 
 [Daniel Rehfeldt](https://www.zib.de/members/rehfeldt) ([@dRehfeldt](https://github.com/dRehfeldt)) &mdash; core data structures and MPS parsing
+
+## Ongoing Development
+
+This code is being developed on an on-going basis at the author's
+[Github site](https://github.com/scipopt/papilo).
+
+## Support
+
+For support in using this software, submit an
+[issue](https://github.com/scipopt/papilo/issues/new).
