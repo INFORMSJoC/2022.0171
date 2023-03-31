@@ -63,7 +63,7 @@ When PaPILO is compiled as part of the SCIP Optimization Suite linking of SoPlex
 available at [github.com/scipopt/papilo](https://github.com/scipopt/papilo).
 
 
-# Dependencies
+## Dependencies
 
 External dependencies that need to be installed by the user are the Intel TBB >= 2020, or TBB from oneAPI runtime library and boost >= 1.65 headers.
 The executable additionally requires some of the boost runtime libraries that are not required when PaPILO is used as
@@ -73,7 +73,7 @@ liberal open-source license.
 
 If TBB is not found, then PaPILO tries to compile a static version. However this may fail on some systems currently and it is strongly recommended to install an Intel TBB runtime library.
 
-# Building
+## Building
 
 Building PaPILO works with the standard cmake workflow:
 (_we recommend running the make command without specifying the number of jobs
@@ -109,7 +109,7 @@ Solvers that are found in the system are automatically linked to the executable.
 Additionally one can specify the locations of solvers, e.g. with `-DSCIP_DIR=<location of scip-config.cmake>`, to allow
 PaPILO to find them in non-standard locations.
 
-# Usage of the binary
+## Usage of the binary
 
 The PaPILO binary provides a list of all available functionality when the help flag `-h` or `--help` is specified.
 The binary provides the three subcommands `solve`, `presolve`, and `postsolve`. If no solvers are linked the `solve` subcommand will fail and print an error message.
@@ -143,7 +143,7 @@ papilo solve -f problem.mps -l problem.sol
 ```
 This will presolve the problem, pass the reduced problem to a solver, and subsequently transform back the optimal solution returned by the solver and write it to problem.sol.
 
-# Using PaPILO as a library
+## Using PaPILO as a library
 
 PaPILO provides a templated C++ interface that allows to specify the type used for numerical computations. During configuration time PaPILO scans the system and provides the fastest available numeric types for quadprecision and for exact rational arithmetic in the file
 `papilo/misc/MultiPrecision.hpp`. Including this file will currently introduce the types
@@ -166,7 +166,7 @@ The C++ interface for using PaPILO mainly revolves around the classes
 *   `papilo::Postsolve<REAL>`, which can transform solutions in the reduced space into solutions for the original problem space.
 The includes for those classes are under `papilo/core/{Problem,Postsolve,Presolve}.hpp`.
 
-## Creating an instance of `papilo::Problem<REAL>`
+### Creating an instance of `papilo::Problem<REAL>`
 
 The PaPILO binary uses the MPS parsing routine to construct an instance of `papilo::Problem<REAL>` with the call `papilo::MpsParser<REAL>::loadProblem("problem.mps")`.
 
@@ -230,7 +230,7 @@ For maximum efficiency the member function
 
 Finally calling `papilo::ProblemBuilder<REAL>::build()` will return an instance of `papilo::Problem<REAL>` with the information that was given to the builder. The builder can be reused afterwards.
 
-## Presolving an instance of `papilo::Problem<REAL>`
+### Presolving an instance of `papilo::Problem<REAL>`
 
 For this section we assume a problem instance is stored in a variable `problem` of type `papilo::Problem<REAL>`.
 
@@ -268,7 +268,7 @@ enum class PresolveStatus : int
 
 And `result.postsolve` contains an instance of the class `papilo::Postsolve<REAL>`.
 
-## Postsolve of a solution in the reduced problem space
+### Postsolve of a solution in the reduced problem space
 
 First we construct a `papilo::Solution<REAL>` from a `papilo::Vec<REAL>` of reduced solution values and an empty instance of `papilo::Solution<REAL>` to hold the original space solution.
 The interface here is not the simplest for the current functionality. It is like this to support
@@ -291,7 +291,7 @@ PostsolveStatus status = result.postsolve.undo(reducedsol, origsol);
 The value of `status` is `PostsolveStatus::kOk` if everything worked or `PostsolveStatus::kFail` otherwise.
 If everything worked then the vector `origsol.primal` contains the primal solution values in the original problem space.
 
-# Presolve parameters
+## Presolve parameters
 
 There are several parameters that can be adjusted to influence the behavior during presolving.
 All the parameters and their default values are listed in the file `parameters.txt`.
@@ -332,7 +332,7 @@ Setting the random seed with this method can simply be achieved by `presolve.get
 The caveat with directly accessing the `papilo::PresolveOptions` is, that parameters added by individual presolvers cannot be set and that no error checking is performed in case the user sets a parameter to an invalid value.
 Nevertheless this can be convenient for setting basic things like tolerances, time limits, and thread limits.
 
-# Adding a presolver
+## Adding a presolver
 
 Adding a presolver to PaPILO requires the following steps. First create a class for your presolver that inherits publically from `papilo::PresolveMethod<REAL>`.
 In the constructor at least adjust the name and the timing of the new presolver.
@@ -380,9 +380,9 @@ presolve.addPresolver( std::unique_ptr<papilo::PresolveMethod<REAL>>( new MyPres
 ```
 Getting the PaPILO binary to call your presolver could be achieved by adding an include for your presolver in `papilo/core/Presolve.hpp` and then adding it together with the other default presolvers in the member function `papilo::Presolve<REAL>::addDefaultPresolvers()`.
 
-# Evaluating PaPILO #
+## Evaluating PaPILO #
 
-## Experiments ##
+### Experiments ##
 
 You can run your performance tests by executing the command `make test` in the root directory or sent the jobs to a slurm cluster with `make testcluster`.
 
@@ -405,7 +405,7 @@ If `make testcluster` is used the overall `out` file must be generated with `./e
 
 Note that the options all have default values. Executing a plain make test will run experiments on the short testset.
 
-## Evaluation with IPET ##
+### Evaluation with IPET ##
 
 [IPET](https://github.com/GregorCH/ipet) can now be used to analyse the overall out/err file(s). 
 We explain the steps to evluate PaPILO with IPET briefly. 
@@ -422,7 +422,7 @@ from .PapiloSolver import PaPILOSolver
 - parse the overall `out`,`err` file(s) with the following command: `ipet-parse -l FILENAME.{err,out}` -> generates an `trn` file
 - evaluate the testrunfile: `ipet-evaluate -t check/results/filename.trn -l -e check/ipet/papilo_evaluation.xml`
 
-## Analysing conflicts ##
+### Analysing conflicts ##
 
 The parser (and its requirements) for analysing conflicts can be found under `check/parser`.
 First, execute experiments with verbose settings. 
@@ -431,7 +431,7 @@ Create a folder `results` there and move the out files (not the overall but only
 Executing the `LogFileParser` will analyse the log and create txt file containing information about the logs in a separate folder for each instance.
 Executing the `TableParser` will parse these information and generate an overall view of the conflicts.
 
-# Licensing
+## Licensing
 
 To avoid confusion about licensing a short note on the LGPLv3.
 This note is just an explanation and legally only the license text itself is of relevance.
@@ -445,7 +445,7 @@ Modifications of PaPILO itself, however, must be distributed under LGPLv3.
 
 For other licensing options we refer to https://scipopt.org/, where PaPILO can be obtained as part of the SCIP Optimization Suite.
 
-# Contributors
+## Contributors
 
 [Alexander Hoen](https://www.zib.de/members/hoen) &mdash; main developer
 
