@@ -27,10 +27,10 @@ https://doi.org/10.1287/ijoc.2022.0171.cd
 Below is the BibTex for citing this snapshot of the repository.
 
 ```
-@article{CacheTest,
+@article{GlexinerGottwaldHoen.2022,
   author =        {A. Gleixner, L. Gottwald, A. Hoen},
   publisher =     {INFORMS Journal on Computing},
-  title =         {\papilo: A Parallel Presolving Library for Integer and Linear Programming with Multiprecision Support},
+  title =         {PaPILO: A Parallel Presolving Library for Integer and Linear Programming with Multiprecision Support},
   year =          {2022},
   doi =           {10.1287/ijoc.2022.0171.cd},
   url =           {https://github.com/INFORMSJoC/2022.0171},
