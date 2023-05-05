@@ -28,7 +28,7 @@ Below is the BibTex for citing this snapshot of the repository.
 
 ```
 @article{GlexinerGottwaldHoen.2022,
-  author =        {A. Gleixner, L. Gottwald, A. Hoen},
+  author =        {Ambros Gleixner and Leona Gottwald and Alexander Hoen},
   publisher =     {INFORMS Journal on Computing},
   title =         {PaPILO: A Parallel Presolving Library for Integer and Linear Programming with Multiprecision Support},
   year =          {2022},
