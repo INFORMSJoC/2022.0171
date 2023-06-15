@@ -1,7 +1,7 @@
 [![INFORMS Journal on Computing Logo](https://INFORMSJoC.github.io/logos/INFORMS_Journal_on_Computing_Header.jpg)](https://pubsonline.informs.org/journal/ijoc)
 
 
-# PaPILO &mdash; Parallel Presolve for Integer and Linear Optimization
+# [PaPILO &mdash; Parallel Presolve for Integer and Linear Optimization](https://doi.org/10.1287/ijoc.2022.0171)
 This archive is distributed in association with the [INFORMS Journal on
 Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
